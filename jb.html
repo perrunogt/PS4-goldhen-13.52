@@ -57,8 +57,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* GRID */
-
     body::before {
       content: "";
 
@@ -90,8 +88,6 @@
       pointer-events: none;
     }
 
-    /* LUZ CENTRAL */
-
     body::after {
       content: "";
 
@@ -106,8 +102,6 @@
 
       pointer-events: none;
     }
-
-    /* PANEL */
 
     #main-container {
       position: relative;
@@ -142,8 +136,6 @@
         box-shadow .4s ease;
     }
 
-    /* ESQUINAS */
-
     #main-container::before,
     #main-container::after {
       content: "";
@@ -177,8 +169,6 @@
 
       border-radius: 0 0 30px 0;
     }
-
-    /* TITULO */
 
     #brand {
       position: absolute;
@@ -220,10 +210,6 @@
       color: var(--muted);
     }
 
-    /* =====================================================
-       NUEVO INDICADOR
-       ===================================================== */
-
     #visual-indicator {
 
       position: relative;
@@ -239,13 +225,7 @@
       margin-top: 38px;
     }
 
-    /*
-      EL CIRCULO ORIGINAL YA NO SE USA VISUALMENTE.
-      Los elementos conservan sus IDs/clases para que jb.js
-      siga funcionando.
-    */
-
-    /* REACTOR CENTRAL */
+    
 
     .core {
 
@@ -301,8 +281,6 @@
       border-radius: 5px;
     }
 
-    /* ROMBOS EXTERIORES */
-
     #visual-indicator::before,
     #visual-indicator::after {
 
@@ -331,8 +309,6 @@
 
       animation-direction: reverse;
     }
-
-    /* BARRAS DE ENERGIA */
 
     #spin {
 
@@ -389,8 +365,6 @@
       animation-delay: .6s;
     }
 
-    /* PULSO */
-
     .pulse {
 
       position: absolute;
@@ -411,8 +385,6 @@
         border-color .4s ease,
         opacity .4s ease;
     }
-
-    /* ESTADO CORRECTO */
 
     body.done #main-container {
 
@@ -456,8 +428,6 @@
         0 0 100px rgba(0,255,136,.35);
     }
 
-    /* ERROR */
-
     body.fail #main-container {
 
       border-color: rgba(255,54,94,.45);
@@ -495,8 +465,6 @@
         0 0 55px rgba(255,54,94,.7);
     }
 
-    /* MENSAJE */
-
     #msg {
 
       position: fixed;
@@ -528,8 +496,6 @@
       display: block;
     }
 
-    /* FOOTER */
-
     #footer {
 
       position: fixed;
@@ -551,8 +517,6 @@
 
       color: var(--green);
     }
-
-    /* LOGS */
 
     #wrap {
       padding: 0;
@@ -647,10 +611,6 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* =====================================================
-       ANIMACIONES
-       ===================================================== */
-
     @keyframes reactor {
 
       0% {
@@ -734,8 +694,7 @@
       }
     }
 
-
-    /* TITULO SUPERIOR */
+    
     #exploit-title {
       position: fixed;
       top: 22px;
@@ -763,7 +722,6 @@
       text-shadow: 0 0 10px rgba(0,255,136,.5);
     }
 
-    /* AGRADECIMIENTOS */
     #credits {
       position: fixed;
       left: 50%;
