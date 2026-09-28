@@ -1,37 +1,256 @@
-```html
 <!-- © 2026 perrunoGT — PS4 Exploit -->
 <html manifest="cache.appcache">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>perrunoGT</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            background: #ffffff;
-            color: #111111;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 255, 120, 0.08),
+                    transparent 45%
+                ),
+                #020604;
+
+            color: #d9ffe9;
+
             font: 15px/1.5 monospace;
-            margin: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        /* GRID DE FONDO */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,255,120,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,255,120,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 35px 35px;
+
+            pointer-events: none;
+        }
+
+        /* BRILLO */
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            background: rgba(0,255,120,0.035);
+
+            filter: blur(90px);
+
+            pointer-events: none;
+        }
+
+        /* PANEL */
+
         #console {
+            position: relative;
+
+            width: min(88vw, 720px);
+            max-height: 70vh;
+
+            padding: 28px 30px;
+
+            overflow-y: auto;
+
+            white-space: pre-wrap;
+
             font-family: monospace;
-            white-space: pre;
+            font-size: 14px;
+            line-height: 1.8;
+
+            background: rgba(2, 12, 7, 0.94);
+
+            border: 1px solid rgba(0,255,120,0.25);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 0 50px rgba(0,255,120,0.07),
+                0 25px 80px rgba(0,0,0,0.7),
+                inset 0 0 35px rgba(0,255,120,0.025);
+
+            text-align: left;
+
+            z-index: 2;
         }
-        .ok   { color: #1a7a1a; }
-        .bad  { color: #cc0000; }
-        .warn { color: #aa6600; }
+
+        /* CABECERA VISUAL */
+
+        body::marker {
+            display: none;
+        }
+
+        .ok {
+            color: #00ff88;
+
+            text-shadow:
+                0 0 8px rgba(0,255,136,0.5);
+        }
+
+        .bad {
+            color: #ff405d;
+
+            text-shadow:
+                0 0 8px rgba(255,64,93,0.4);
+        }
+
+        .warn {
+            color: #b8ff52;
+
+            text-shadow:
+                0 0 8px rgba(184,255,82,0.35);
+        }
+
+        /* LINEA SUPERIOR DEL PANEL */
+
+        #console::before {
+            content: "PERRUNOGT // PS4 HOST";
+            display: block;
+
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+
+            color: #00ff88;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            letter-spacing: 0.16em;
+
+            border-bottom: 1px solid rgba(0,255,136,0.16);
+
+            text-shadow:
+                0 0 10px rgba(0,255,136,0.5);
+        }
+
+        /* LOGS */
+
+        #console {
+            scrollbar-width: thin;
+            scrollbar-color: #00b968 transparent;
+        }
+
+        #console::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        #console::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #console::-webkit-scrollbar-thumb {
+            background: #00b968;
+            border-radius: 10px;
+        }
+
+        /* BARRA DE ESCANEO */
+
+        body > #console::after {
+            content: "";
+
+            position: fixed;
+
+            left: 0;
+            right: 0;
+
+            height: 1px;
+
+            background: rgba(0,255,136,0.18);
+
+            box-shadow:
+                0 0 10px rgba(0,255,136,0.3);
+
+            animation: scan 4s linear infinite;
+
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* PANTALLAS PEQUEÑAS */
+
+        @media (max-width: 600px) {
+            #console {
+                width: 92vw;
+                padding: 22px;
+
+                font-size: 12px;
+                line-height: 1.7;
+            }
+
+            #console::before {
+                font-size: 11px;
+            }
+        }
     </style>
+
     <script>
     if (window.applicationCache && window.applicationCache.status == 0) {
         window.location.replace("cache.html");
     }
     </script>
 </head>
+
 <body>
-    perrunoGT · PS4 Exploit<br>
-    © 2026 perrunoGT<br>
-    <br>
+
     <pre id="console"></pre>
+
 </body>
+
 <script>
 (function () {
     var con = document.getElementById("console");
@@ -134,4 +353,3 @@
 })();
 </script>
 </html>
-```
