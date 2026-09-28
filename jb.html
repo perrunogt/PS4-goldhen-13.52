@@ -14,6 +14,7 @@
       --text: #eafff3;
       --muted: #537565;
       --red: #ff365e;
+      --gold: #ffea00;
     }
 
     * {
@@ -271,15 +272,22 @@
       transform: rotate(45deg);
     }
 
+    /* ESTADO EXITO (GOLDHEN ACTIVADO EN AMARILLO NEÓN) */
     body.done #main-container {
-      border-color: rgba(0, 255, 136, 0.55);
+      border-color: rgba(255, 234, 0, 0.7);
 
       box-shadow:
-        0 0 28px rgba(0, 255, 136, 0.18);
+        0 0 28px rgba(255, 234, 0, 0.35);
+    }
+
+    body.done #main-container::before,
+    body.done #main-container::after {
+      border-color: var(--gold);
     }
 
     body.done #brand {
-      color: var(--green3);
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(255, 234, 0, 0.8);
     }
 
     body.done #spin {
@@ -287,14 +295,33 @@
     }
 
     body.done .pulse {
-      border-color: rgba(0, 255, 136, 0.55);
+      border-color: rgba(255, 234, 0, 0.7);
     }
 
     body.done .core {
-      background: var(--green);
+      background: var(--gold);
 
       box-shadow:
-        0 0 20px var(--green);
+        0 0 25px var(--gold);
+    }
+
+    /* CAMBIO DE CARTEL Y COLORES EN CSS PURO */
+    body.done #exploit-title {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(18, 15, 0, 0.96);
+      box-shadow: 0 0 15px rgba(255, 234, 0, 0.35);
+      font-size: 0; /* Oculta el texto original sin romper layout */
+    }
+
+    body.done #exploit-title::after {
+      content: "GOLDHEN ACTIVADO";
+      font-size: 11px;
+    }
+
+    body.done #footer::before,
+    body.done #credits {
+      color: var(--gold);
     }
 
     body.fail #main-container {
@@ -469,6 +496,7 @@
       font-family: monospace, sans-serif;
 
       font-size: 18px;
+
       font-weight: 700;
 
       color: var(--text);
@@ -519,6 +547,10 @@
       #exploit-title {
         top: 12px;
         padding: 8px 12px;
+        font-size: 8px;
+      }
+
+      body.done #exploit-title::after {
         font-size: 8px;
       }
 
