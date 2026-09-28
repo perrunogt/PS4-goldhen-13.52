@@ -1,312 +1,227 @@
-<!-- © 2026 perrunoGT — PS4 Exploit -->
 <html manifest="cache.appcache">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>perrunoGT</title>
+<title>perrunoGT · PS4 Exploit</title>
 
-    <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
+<style>
+html, body {
+    width: 100%;
+    height: 100%;
+}
 
-        body {
-            background:
-                radial-gradient(
-                    circle at 50% 50%,
-                    rgba(0, 255, 120, 0.08),
-                    transparent 45%
-                ),
-                #020604;
+body {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 255, 136, 0.08),
+            transparent 45%
+        ),
+        #020604;
 
-            color: #dfffea;
+    color: #dfffea;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
 
-            font: 15px/1.5 monospace;
+    font-family: monospace;
 
-            margin: 0;
-            overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Fondo de cuadrícula */
 
-        /* Fondo estilo terminal */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(0, 255, 136, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 255, 136, 0.025) 1px,
+            transparent 1px
+        );
 
-            background-image:
-                linear-gradient(
-                    rgba(0, 255, 120, 0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(0, 255, 120, 0.025) 1px,
-                    transparent 1px
-                );
+    background-size: 40px 40px;
+    pointer-events: none;
+}
 
-            background-size: 40px 40px;
+/* Panel principal */
 
-            pointer-events: none;
-        }
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-        /* Panel */
+    width: min(82vw, 620px);
 
-        #console {
-            position: relative;
+    padding: 32px 28px;
 
-            width: min(85vw, 700px);
-            max-height: 65vh;
+    font-size: 20px;
+    font-family: monospace;
 
-            padding: 30px;
+    color: #00ff88;
 
-            font-family: monospace;
-            font-size: 14px;
-            line-height: 1.8;
+    transform: translate(-50%, -50%);
 
-            white-space: pre-wrap;
+    background: rgba(2, 12, 7, 0.94);
 
-            overflow-y: auto;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 18px;
 
-            color: #dfffea;
+    box-shadow:
+        0 0 60px rgba(0, 255, 136, 0.08),
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        inset 0 0 30px rgba(0, 255, 136, 0.025);
 
-            background: rgba(2, 12, 7, 0.94);
+    text-shadow:
+        0 0 10px rgba(0, 255, 136, 0.5);
 
-            border: 1px solid rgba(0, 255, 120, 0.25);
+    box-sizing: border-box;
+}
 
-            border-radius: 18px;
+/* Encabezado */
 
-            box-shadow:
-                0 0 60px rgba(0, 255, 120, 0.08),
-                0 25px 80px rgba(0, 0, 0, 0.7),
-                inset 0 0 35px rgba(0, 255, 120, 0.025);
+.info::before {
+    content: "PERRUNOGT // PS4 HOST";
 
-            z-index: 1;
-        }
+    display: block;
 
-        /* Encabezado visual */
-        #console::before {
-            content: "PERRUNOGT // PS4 HOST";
+    margin-bottom: 24px;
+    padding-bottom: 12px;
 
-            display: block;
+    color: #00ff88;
 
-            margin-bottom: 18px;
-            padding-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
 
-            color: #00ff88;
+    letter-spacing: 0.15em;
 
-            font-size: 13px;
-            font-weight: bold;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
 
-            letter-spacing: 0.15em;
+    text-shadow:
+        0 0 12px rgba(0, 255, 136, 0.55);
+}
 
-            border-bottom: 1px solid rgba(0, 255, 136, 0.18);
+/* Línea decorativa */
 
-            text-shadow:
-                0 0 10px rgba(0, 255, 136, 0.5);
-        }
+.info::after {
+    content: "";
+    display: block;
 
-        .ok {
-            color: #00ff88;
-            text-shadow: 0 0 8px rgba(0, 255, 136, 0.45);
-        }
+    width: 70%;
+    height: 2px;
 
-        .bad {
-            color: #ff405d;
-            text-shadow: 0 0 8px rgba(255, 64, 93, 0.4);
-        }
+    margin: 24px auto 0;
 
-        .warn {
-            color: #b8ff52;
-            text-shadow: 0 0 8px rgba(184, 255, 82, 0.35);
-        }
+    background: #00ff88;
 
-        /* Barra de desplazamiento */
+    box-shadow:
+        0 0 12px rgba(0, 255, 136, 0.6);
 
-        #console::-webkit-scrollbar {
-            width: 5px;
-        }
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
 
-        #console::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        #console::-webkit-scrollbar-thumb {
-            background: #00b968;
-            border-radius: 10px;
-        }
-
-        /* Animación decorativa */
-
-        body::after {
-            content: "";
-
-            position: fixed;
-
-            left: 0;
-            right: 0;
-
-            height: 1px;
-
-            background: rgba(0, 255, 136, 0.15);
-
-            box-shadow:
-                0 0 10px rgba(0, 255, 136, 0.3);
-
-            animation: scan 5s linear infinite;
-
-            pointer-events: none;
-
-            z-index: 3;
-        }
-
-        @keyframes scan {
-            0% {
-                top: 0;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            #console {
-                width: 88vw;
-                padding: 22px;
-                font-size: 12px;
-            }
-        }
-    </style>
-
-    <script>
-    if (window.applicationCache && window.applicationCache.status == 0) {
-        window.location.replace("cache.html");
+@keyframes glow {
+    from {
+        opacity: 0.35;
+        transform: scaleX(0.75);
     }
-    </script>
+
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* Línea de escaneo */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: rgba(0, 255, 136, 0.15);
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 136, 0.3);
+
+    animation: scan 5s linear infinite;
+
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .info {
+        width: 88vw;
+        padding: 25px 18px;
+        font-size: 16px;
+    }
+
+    .info::before {
+        font-size: 11px;
+    }
+}
+</style>
+
+<script>
+history.replaceState(null, null, 'index.html');
+var histlength = history.length;
+history.go(-histlength);
+
+function DLProgress(e) {
+    var pct = Math.round(e.loaded / e.total * 100);
+    msgs.innerHTML = "perrunoGT &middot; Installing ... " + pct + "%";
+}
+
+function DisplayCacheProgress() {
+    setTimeout(function () {
+        msgs.innerHTML = "perrunoGT &middot; Cache OK";
+    }, 2000);
+    setTimeout(function () {
+        location.reload();
+    }, 3000);
+}
+
+window.applicationCache.addEventListener("progress",    DLProgress,           false);
+window.applicationCache.oncached     = function (e) { DisplayCacheProgress(); };
+window.applicationCache.onupdateready = function (e) { DisplayCacheProgress(); };
+</script>
+
 </head>
 
 <body>
-    perrunoGT · PS4 Exploit<br>
-    © 2026 perrunoGT<br>
-    <br>
-    <pre id="console"></pre>
+<div id="msgs" class="info"></div>
 </body>
-
-<script>
-(function () {
-    var con = document.getElementById("console");
-
-    function print(msg, cls) {
-        var span = document.createElement("span");
-        if (cls) span.className = cls;
-        span.textContent = msg + "\n";
-        con.appendChild(span);
-    }
-
-    var params = new URLSearchParams(location.search);
-
-    // Firmwares with measured kernel table — KEEP IN SYNC with ps4_offsets.js
-    var SUPPORTED = { 1302: 1, 1304: 1, 1350: 1, 1352: 1 };
-
-    var key = null, fwnum = null;
-    var m = /PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
-    if (m) {
-        var ms = parseInt(m[2], 16).toString(16);
-        if (ms.length < 2) ms = "0" + ms;
-        key = m[1] + "." + ms;
-        fwnum = parseInt(m[1], 10) * 100 + parseInt(ms, 10);
-    }
-
-    var forced    = params.get("force") === "1";
-    var supported = forced || (fwnum !== null && SUPPORTED[fwnum] === 1);
-
-    print("firmware: " + (key || "unknown"));
-    print("supported: " + (supported ? "yes" : "no"), supported ? "ok" : "bad");
-
-    var target = "jb.html" + location.search;
-
-    function go() {
-        print("loading exploit...", "warn");
-        location.replace(target);
-    }
-
-    function waitForTap(msg, action) {
-        print(msg, "warn");
-        function fire() {
-            window.removeEventListener("click",   fire);
-            window.removeEventListener("keydown", fire);
-            action();
-        }
-        window.addEventListener("click",   fire);
-        window.addEventListener("keydown", fire);
-    }
-
-    if (!supported) {
-        print("UNSUPPORTED FIRMWARE — tap / press X to run anyway", "bad");
-        waitForTap("", go);
-        return;
-    }
-
-    var ac = window.applicationCache;
-    if (!ac || !document.documentElement.hasAttribute("manifest")) {
-        go();
-    } else if (!navigator.onLine) {
-        print("offline — running from cache", "ok");
-        go();
-    } else if (ac.status === ac.IDLE) {
-        print("cached", "ok");
-        go();
-    } else if (ac.status === ac.UPDATEREADY) {
-        try { ac.swapCache(); } catch (e) {}
-        print("update downloaded", "ok");
-        waitForTap("UPDATE READY — tap / press X to reload", function () { location.reload(); });
-    } else {
-        print("checking cache...");
-        ac.addEventListener("downloading",
-            function () { print("caching for offline (first run)..."); }, false);
-        ac.addEventListener("progress", function (e) {
-            if (e && e.total)
-                print("caching " + Math.round((e.loaded / e.total) * 100) + "%");
-        }, false);
-        ac.addEventListener("cached", function () {
-            print("cached for offline use", "ok");
-            waitForTap("CACHED — tap / press X to run", go);
-        }, false);
-        ac.addEventListener("updateready", function () {
-            try { ac.swapCache(); } catch (e) {}
-            print("update downloaded", "ok");
-            waitForTap("UPDATE READY — tap / press X to reload",
-                       function () { location.reload(); });
-        }, false);
-        ac.addEventListener("noupdate", function () {
-            print("cached — offline ready", "ok");
-            go();
-        }, false);
-        ac.addEventListener("error", function () {
-            print("cache unavailable");
-            waitForTap("CACHE FAILED — tap / press X to run anyway", go);
-        }, false);
-        ac.addEventListener("obsolete", function () {
-            print("cache obsolete");
-            waitForTap("CACHE OBSOLETE — tap / press X to run", go);
-        }, false);
-    }
-})();
-</script>
 </html>
