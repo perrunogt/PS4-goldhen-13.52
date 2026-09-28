@@ -1,19 +1,15 @@
 <!doctype html>
-<html lang="en" manifest="cache.appcache">
+<html lang="es" manifest="cache.appcache">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
   <title>HOST:PERRUNOGT</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
-
     :root {
       --bg: #020504;
-      --panel: rgba(4, 14, 9, 0.88);
+      --panel: #040e09;
       --green: #00ff88;
-      --green2: #00c96b;
       --green3: #65ffb3;
       --text: #eafff3;
       --muted: #537565;
@@ -40,66 +36,29 @@
       align-items: center;
       justify-content: center;
 
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(0, 255, 136, 0.10),
-          transparent 40%
-        ),
-        radial-gradient(
-          ellipse at 20% 90%,
-          rgba(0, 255, 136, 0.05),
-          transparent 35%
-        ),
-        #020504;
-
+      background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+
+      font-family: monospace, sans-serif;
     }
 
     body::before {
       content: "";
-
       position: absolute;
       inset: 0;
 
-      background-image:
+      background:
         linear-gradient(
-          rgba(0,255,136,0.025) 1px,
+          rgba(0, 255, 136, 0.018) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(0,255,136,0.025) 1px,
+          rgba(0, 255, 136, 0.018) 1px,
           transparent 1px
         );
 
       background-size: 40px 40px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent,
-          black 25%,
-          black 75%,
-          transparent
-        );
-
-      pointer-events: none;
-    }
-
-    body::after {
-      content: "";
-
-      position: absolute;
-
-      width: 480px;
-      height: 480px;
-
-      background: rgba(0,255,136,0.045);
-
-      filter: blur(90px);
-
       pointer-events: none;
     }
 
@@ -119,21 +78,12 @@
 
       background: var(--panel);
 
-      border: 1px solid rgba(0,255,136,0.22);
-
+      border: 1px solid rgba(0, 255, 136, 0.22);
       border-radius: 30px;
 
       box-shadow:
-        0 25px 90px rgba(0,0,0,0.75),
-        0 0 70px rgba(0,255,136,0.07),
-        inset 0 0 45px rgba(0,255,136,0.025);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      transition:
-        border-color .4s ease,
-        box-shadow .4s ease;
+        0 10px 35px rgba(0, 0, 0, 0.72),
+        0 0 18px rgba(0, 255, 136, 0.07);
     }
 
     #main-container::before,
@@ -146,8 +96,7 @@
       height: 42px;
 
       border-color: var(--green);
-
-      opacity: .75;
+      opacity: 0.7;
     }
 
     #main-container::before {
@@ -172,24 +121,18 @@
 
     #brand {
       position: absolute;
-
       top: 38px;
 
-      font-family: 'JetBrains Mono', monospace;
-
+      font-family: monospace, sans-serif;
       font-size: clamp(17px, 5vw, 23px);
-
       font-weight: 800;
 
-      letter-spacing: .13em;
+      letter-spacing: 0.13em;
 
-      color: white;
+      color: #fff;
 
       text-shadow:
-        0 0 8px rgba(0,255,136,.8),
-        0 0 25px rgba(0,255,136,.25);
-
-      transition: .4s ease;
+        0 0 8px rgba(0, 255, 136, 0.55);
     }
 
     #brand::before {
@@ -202,33 +145,27 @@
       text-align: center;
 
       font-size: 8px;
-
       font-weight: 400;
 
-      letter-spacing: .35em;
+      letter-spacing: 0.35em;
 
       color: var(--muted);
     }
 
     #visual-indicator {
-
       position: relative;
 
       width: 190px;
       height: 150px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       margin-top: 38px;
     }
 
-    
-
     .core {
-
       position: relative;
 
       width: 58px;
@@ -238,30 +175,15 @@
 
       transform: rotate(45deg);
 
-      background:
-        linear-gradient(
-          135deg,
-          #baffd9,
-          var(--green)
-        );
+      background: var(--green);
 
       box-shadow:
-        0 0 12px var(--green),
-        0 0 35px rgba(0,255,136,.75),
-        0 0 80px rgba(0,255,136,.30);
-
-      animation: reactor 1.5s ease-in-out infinite;
+        0 0 14px var(--green);
 
       z-index: 5;
-
-      transition:
-        background .4s ease,
-        box-shadow .4s ease,
-        transform .4s ease;
     }
 
     .core::before {
-
       content: "";
 
       position: absolute;
@@ -272,18 +194,13 @@
       top: 18px;
       left: 18px;
 
-      background: #effff6;
-
-      box-shadow:
-        0 0 15px white,
-        0 0 30px var(--green);
+      background: #fff;
 
       border-radius: 5px;
     }
 
     #visual-indicator::before,
     #visual-indicator::after {
-
       content: "";
 
       position: absolute;
@@ -291,51 +208,35 @@
       width: 110px;
       height: 110px;
 
-      border: 1px solid rgba(0,255,136,.25);
+      border: 1px solid rgba(0, 255, 136, 0.18);
 
       transform: rotate(45deg);
-
-      animation: diamond 3s linear infinite;
     }
 
     #visual-indicator::after {
-
       width: 150px;
       height: 150px;
-
-      border-color: rgba(0,255,136,.10);
-
-      animation-duration: 6s;
-
-      animation-direction: reverse;
+      border-color: rgba(0, 255, 136, 0.07);
     }
 
     #spin {
-
       position: absolute;
 
       width: 180px;
       height: 70px;
-
-      border: none;
-
-      opacity: 1;
-
-      animation: none;
 
       z-index: 2;
     }
 
     #spin::before,
     #spin::after {
-
       content: "";
 
       position: absolute;
 
       left: 50%;
 
-      width: 180px;
+      width: 140px;
       height: 2px;
 
       transform: translateX(-50%);
@@ -347,11 +248,6 @@
           var(--green),
           transparent
         );
-
-      box-shadow:
-        0 0 8px var(--green);
-
-      animation: energy 1.2s ease-in-out infinite;
     }
 
     #spin::before {
@@ -359,14 +255,10 @@
     }
 
     #spin::after {
-
       bottom: 8px;
-
-      animation-delay: .6s;
     }
 
     .pulse {
-
       position: absolute;
 
       width: 130px;
@@ -374,99 +266,64 @@
 
       border-radius: 18px;
 
-      border: 1px dashed rgba(0,255,136,.22);
+      border: 1px dashed rgba(0, 255, 136, 0.16);
 
       transform: rotate(45deg);
-
-      animation:
-        pulseBox 2s ease-in-out infinite;
-
-      transition:
-        border-color .4s ease,
-        opacity .4s ease;
     }
 
     body.done #main-container {
-
-      border-color: rgba(0,255,136,.5);
+      border-color: rgba(0, 255, 136, 0.55);
 
       box-shadow:
-        0 25px 90px rgba(0,0,0,.75),
-        0 0 100px rgba(0,255,136,.16),
-        inset 0 0 55px rgba(0,255,136,.05);
+        0 0 28px rgba(0, 255, 136, 0.18);
     }
 
     body.done #brand {
-
       color: var(--green3);
-
-      text-shadow:
-        0 0 12px var(--green),
-        0 0 35px rgba(0,255,136,.45);
     }
 
     body.done #spin {
-      opacity: 0;
+      display: none;
     }
 
     body.done .pulse {
-
-      border-color: rgba(0,255,136,.65);
-
-      animation: none;
+      border-color: rgba(0, 255, 136, 0.55);
     }
 
     body.done .core {
-
-      animation: successCore 1.2s ease-in-out infinite;
-
       background: var(--green);
 
       box-shadow:
-        0 0 20px var(--green),
-        0 0 55px rgba(0,255,136,.85),
-        0 0 100px rgba(0,255,136,.35);
+        0 0 20px var(--green);
     }
 
     body.fail #main-container {
-
-      border-color: rgba(255,54,94,.45);
+      border-color: rgba(255, 54, 94, 0.45);
 
       box-shadow:
-        0 25px 90px rgba(0,0,0,.75),
-        0 0 90px rgba(255,54,94,.12);
+        0 0 28px rgba(255, 54, 94, 0.16);
     }
 
     body.fail #brand {
-
       color: var(--red);
-
-      text-shadow:
-        0 0 15px rgba(255,54,94,.8);
     }
 
     body.fail #spin {
-      opacity: 0;
+      display: none;
     }
 
     body.fail .pulse {
-
       border-color: var(--red);
-
-      animation: none;
     }
 
     body.fail .core {
-
       background: var(--red);
 
       box-shadow:
-        0 0 20px var(--red),
-        0 0 55px rgba(255,54,94,.7);
+        0 0 16px var(--red);
     }
 
     #msg {
-
       position: fixed;
 
       left: 50%;
@@ -480,16 +337,13 @@
 
       text-align: center;
 
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace, sans-serif;
 
       font-size: 11px;
 
-      letter-spacing: .18em;
+      letter-spacing: 0.18em;
 
       color: var(--red);
-
-      text-shadow:
-        0 0 12px rgba(255,54,94,.6);
     }
 
     body.fail #msg {
@@ -497,25 +351,78 @@
     }
 
     #footer {
-
       position: fixed;
 
       bottom: 25px;
 
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace, sans-serif;
 
       font-size: 9px;
 
-      letter-spacing: .22em;
+      letter-spacing: 0.22em;
 
-      color: rgba(140,210,170,.4);
+      color: rgba(140, 210, 170, 0.4);
     }
 
     #footer::before {
-
-      content: "◆  ";
+      content: "◆ ";
 
       color: var(--green);
+    }
+
+    #exploit-title {
+      position: fixed;
+
+      top: 22px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: 10;
+
+      padding: 10px 22px;
+
+      color: var(--green);
+
+      border: 1px solid rgba(0, 255, 136, 0.45);
+      border-radius: 10px;
+
+      background: rgba(2, 12, 7, 0.96);
+
+      font-family: monospace, sans-serif;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
+      text-align: center;
+
+      white-space: nowrap;
+    }
+
+    #credits {
+      position: fixed;
+
+      left: 50%;
+      bottom: 48px;
+
+      transform: translateX(-50%);
+
+      z-index: 10;
+
+      width: min(92vw, 700px);
+
+      color: var(--green);
+
+      font-family: monospace, sans-serif;
+
+      font-size: 10px;
+      line-height: 1.5;
+
+      letter-spacing: 0.05em;
+
+      text-align: center;
     }
 
     #wrap {
@@ -528,7 +435,6 @@
     }
 
     body.log {
-
       display: block;
 
       overflow: auto;
@@ -541,12 +447,13 @@
     body.log::before,
     body.log::after,
     body.log #main-container,
-    body.log #footer {
+    body.log #footer,
+    body.log #exploit-title,
+    body.log #credits {
       display: none;
     }
 
     body.log #wrap {
-
       display: block;
 
       max-width: 900px;
@@ -555,22 +462,19 @@
     }
 
     body.log #state {
-
       display: block;
 
       margin-bottom: 12px;
 
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace, sans-serif;
 
       font-size: 18px;
-
       font-weight: 700;
 
       color: var(--text);
     }
 
     body.log #out {
-
       display: block;
 
       max-height: calc(100vh - 100px);
@@ -581,13 +485,13 @@
 
       white-space: pre-wrap;
 
-      font: 12px/1.6 'JetBrains Mono', monospace;
+      font: 12px/1.6 monospace, sans-serif;
 
       color: var(--text);
 
-      background: rgba(255,255,255,.025);
+      background: rgba(255, 255, 255, 0.02);
 
-      border: 1px solid rgba(0,255,136,.15);
+      border: 1px solid rgba(0, 255, 136, 0.12);
 
       border-radius: 12px;
     }
@@ -608,142 +512,7 @@
 
     code {
       color: #72c99c;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    @keyframes reactor {
-
-      0% {
-        transform: rotate(45deg) scale(.92);
-      }
-
-      50% {
-        transform: rotate(45deg) scale(1.08);
-      }
-
-      100% {
-        transform: rotate(45deg) scale(.92);
-      }
-    }
-
-    @keyframes diamond {
-
-      from {
-        transform: rotate(45deg) scale(.9);
-        opacity: .25;
-      }
-
-      50% {
-        opacity: .8;
-      }
-
-      to {
-        transform: rotate(405deg) scale(1.08);
-        opacity: .25;
-      }
-    }
-
-    @keyframes pulseBox {
-
-      0% {
-        transform: rotate(45deg) scale(.82);
-        opacity: .25;
-      }
-
-      50% {
-        transform: rotate(45deg) scale(1);
-        opacity: .8;
-      }
-
-      100% {
-        transform: rotate(45deg) scale(.82);
-        opacity: .25;
-      }
-    }
-
-    @keyframes energy {
-
-      0% {
-        width: 35px;
-        opacity: .15;
-      }
-
-      50% {
-        width: 180px;
-        opacity: 1;
-      }
-
-      100% {
-        width: 35px;
-        opacity: .15;
-      }
-    }
-
-    @keyframes successCore {
-
-      0% {
-        transform: rotate(45deg) scale(1);
-      }
-
-      50% {
-        transform: rotate(45deg) scale(1.16);
-      }
-
-      100% {
-        transform: rotate(45deg) scale(1);
-      }
-    }
-
-    
-    #exploit-title {
-      position: fixed;
-      top: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-
-      padding: 10px 22px;
-      color: var(--green);
-      border: 1px solid rgba(0,255,136,.55);
-      border-radius: 10px;
-      background: rgba(2,12,7,.78);
-
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .10em;
-      text-align: center;
-      white-space: nowrap;
-
-      box-shadow:
-        0 0 18px rgba(0,255,136,.12),
-        inset 0 0 12px rgba(0,255,136,.04);
-
-      text-shadow: 0 0 10px rgba(0,255,136,.5);
-    }
-
-    #credits {
-      position: fixed;
-      left: 50%;
-      bottom: 48px;
-      transform: translateX(-50%);
-      z-index: 10;
-
-      width: min(92vw, 700px);
-      color: var(--green);
-
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      line-height: 1.5;
-      letter-spacing: .05em;
-      text-align: center;
-
-      text-shadow: 0 0 8px rgba(0,255,136,.45);
-    }
-
-    body.log #exploit-title,
-    body.log #credits {
-      display: none;
+      font-family: monospace, sans-serif;
     }
 
     @media (max-width: 600px) {
@@ -758,34 +527,36 @@
         font-size: 8px;
         padding: 0 12px;
       }
-    }
 
+      #main-container {
+        width: 88vw;
+        height: 88vw;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <div id="exploit-title">CARGA DE EXPLOIT GOLDHEN 11.00 A 13.52</div>
+  <div id="exploit-title">
+    CARGA DE EXPLOIT GOLDHEN 11.00 A 13.52
+  </div>
 
   <div id="main-container">
-
     <div id="brand">HOST:PERRUNOGT</div>
 
     <div id="visual-indicator">
-
       <div id="spin"></div>
-
       <div class="pulse"></div>
-
       <div class="core"></div>
-
     </div>
-
   </div>
 
   <div id="msg">Restart your console</div>
 
-  <div id="credits">Agradecimientos a Raw game y sistro por la distribución del exploit y carga de GoldHEN</div>
+  <div id="credits">
+    Agradecimientos a Raw game y sistro por la distribución del exploit y carga de GoldHEN
+  </div>
 
   <div id="wrap">
     <div id="state"></div>
@@ -802,4 +573,3 @@
 
 </body>
 </html>
-
